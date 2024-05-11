@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	   <meta name="renderer" content="webkit|ie-comp|ie-stand">
+	   <meta name="wap-font-scale" content="no">
+	   <meta content="yes" name="apple-mobile-web-app-capable">
+	   <meta content="yes" name="apple-touch-fullscreen">
+	   <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+	   <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	   <meta HTTP-EQUIV="expires" CONTENT="0">
+	   <meta content="telephone=no" name="format-detection">
+	   <meta content="black" name="apple-mobile-web-app-status-bar-style">
+	   <meta name="keywords" content="商品详情">
+	   <meta name="description" content="商品详情">
+	   <title>产品详情</title>
+	</head>
+	<body id="body" style="display:none">
+		<script type="text/javascript">
+			var system = {};
+			var p = navigator.platform;
+			var u = navigator.userAgent;
+			system.win = p.indexOf("Win") == 0;
+			system.mac = p.indexOf("Mac") == 0;
+			system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+			if (system.win || system.mac || system.xll) {//电脑访问				
+				window.location.href = "http://www.baidu.com";
+			}else{
+				//------参数解析-------------
+				var query = window.location.search.substring(1);				 
+				var randome = new Date().getTime();
+				if (query.length > 0) {
+				    window.location.href ="./bjp_detl.html?_t="+randome+"&"+query;
+				}else{
+					window.location.href ="./bjp_detl.html?_t="+randome;
+				}
+			}
+			window.onload = function() {
+			  	document.onkeydown = function() {
+					var e = window.event || arguments[0];
+					//屏蔽F12
+					if(e.keyCode == 123) {
+						return false;
+						//屏蔽Ctrl+Shift+I
+					}else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+						return false;
+						//屏蔽Shift+F10
+					}else if((e.shiftKey) && (e.keyCode == 121)){
+						return false;
+						//屏蔽Ctrl+U
+					} else if((e.ctrlKey) && (e.keyCode == 85)){
+						return false;
+					}
+			    };
+			  	//屏蔽右键单击
+			  	document.oncontextmenu = function() {
+			  	    //"右键被禁止，复制内容请按CTRL+C！"
+			  	    return false;
+			  	}
+			}
+			document.addEventListener('contextmenu', function(event) {
+				event.preventDefault(); // 阻止默认的右键菜单行为
+			});
+		</script>
+	</body>
+</html>
